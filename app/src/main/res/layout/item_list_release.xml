@@ -13,6 +13,7 @@
 
 
             <TextView
+                android:id="@+id/releaseType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text = "Анимация"
@@ -20,6 +21,7 @@
                 android:textAlignment="center"/>
 
             <TextView
+                android:id="@+id/releaseTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text = "Аида"

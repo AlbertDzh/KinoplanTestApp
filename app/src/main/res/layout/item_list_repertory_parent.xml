@@ -26,6 +26,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/releaseListType"
         app:layout_constraintTop_toBottomOf="@+id/releaseListType"
-        tools:listitem="@layout/item_list_repertory" />
+        tools:listitem="@layout/item_list_release" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
