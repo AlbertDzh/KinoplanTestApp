@@ -1,6 +1,5 @@
 package com.raywenderlich.kinoplantestapp.presentation.screens.releases.adapters
 
-import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,11 +10,12 @@ import com.raywenderlich.kinoplantestapp.R
 import com.raywenderlich.kinoplantestapp.model.Banner
 import com.raywenderlich.kinoplantestapp.model.Release
 
-class ReleaseRepertoryAdapter(private val banners: List<Banner>, private val releases: List<Release>):
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    val BANNER = 0
-    val RELEASE = 1
+class ReleaseRepertoryAdapter(private val releases: List<Release>):
+    RecyclerView.Adapter<ReleaseRepertoryAdapter.ReleaseViewHolder>() {
+    companion object {
+        private val BANNER = 0
+        private val RELEASE = 1
+    }
 
     class BannerViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         fun bind(banner: Banner){
@@ -31,33 +31,14 @@ class ReleaseRepertoryAdapter(private val banners: List<Banner>, private val rel
         }
     }
 
-
-
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return when(viewType){
-            BANNER -> {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_banner, parent)
-                ReleaseViewHolder(view)
-            }
-            RELEASE -> {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_repertory_parent, parent)
-                BannerViewHolder(view)
-            }
-
-            else -> throw IllegalArgumentException(Resources.getSystem().getString(R.string.error))
-        }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReleaseViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_release, parent, false)
+        return ReleaseViewHolder(view)
     }
 
-    override fun getItemCount(): Int {
-        return banners.size + releases.size
-    }
+    override fun getItemCount(): Int = releases.size
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
-    }
-
-    override fun getItemViewType(position: Int): Int {
-        return super.getItemViewType(position)
+    override fun onBindViewHolder(holder: ReleaseViewHolder, position: Int) {
+        holder.bind(releases[position])
     }
 }

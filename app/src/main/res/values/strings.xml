@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">kinoplanTestApp</string>
     <string name="error">Что-то пошло не так!</string>
+    <string name="now">Сейчас</string>
+    <string name="premier">Премьера</string>
+    <string name="kids">Детям</string>
+    <string name="soon">Скоро в кино</string>
 </resources>

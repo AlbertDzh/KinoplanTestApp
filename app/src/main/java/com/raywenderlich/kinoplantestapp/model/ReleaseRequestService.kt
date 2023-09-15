@@ -29,8 +29,13 @@ data class Banner(
     val link: String?
 )
 
+data class RepertoryItem(
+    val title: String,
+    val releases: List<Release>
+)
+
 data class Repertory(
-    val banners: List<Banner>,
+    //val banners: List<Banner>,
     val now: List<Release>,
     val premiere: List<Release>,
     val kids: List<Release>,
@@ -860,7 +865,7 @@ fun getRelease(id: String): Release? = getAllReleases().find { it.id == id }
 fun getRandomReleases(count: Int): List<Release> = getAllReleases().shuffled().take(count)
 
 fun getMockRepertory(): Repertory = Repertory(
-    banners = listOf(
+    /* banners = listOf(
         Banner(
             imageUrl = "https://xage.ru/media/uploads/2017/01/kong_skull_island_00.jpg",
             link = null
@@ -885,7 +890,7 @@ fun getMockRepertory(): Repertory = Repertory(
             imageUrl = "https://xage.ru/media/uploads/2017/05/pirates/pirates_01.jpg",
             link = null
         )
-    ),
+    ), */
     now = getRandomReleases(7),
     premiere = getRandomReleases(7),
     kids = getRandomReleases(7),
