@@ -13,16 +13,6 @@ import com.squareup.picasso.Picasso
 
 class ReleaseRepertoryAdapter(private val releases: List<Release>):
     RecyclerView.Adapter<ReleaseRepertoryAdapter.ReleaseViewHolder>() {
-    companion object {
-        private val BANNER = 0
-        private val RELEASE = 1
-    }
-
-    class BannerViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        fun bind(banner: Banner){
-            val imageView: ImageView = itemView.findViewById(R.id.bannerCarouselImageView)
-        }
-    }
 
     class ReleaseViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val imageView: ImageView = itemView.findViewById(R.id.releasePoster)
