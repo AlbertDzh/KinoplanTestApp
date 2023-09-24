@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.kinoplantestapp.R
 import com.raywenderlich.kinoplantestapp.model.Banner
 import com.raywenderlich.kinoplantestapp.model.Release
+import com.squareup.picasso.Picasso
 
 class ReleaseRepertoryAdapter(private val releases: List<Release>):
     RecyclerView.Adapter<ReleaseRepertoryAdapter.ReleaseViewHolder>() {
@@ -24,10 +25,13 @@ class ReleaseRepertoryAdapter(private val releases: List<Release>):
     }
 
     class ReleaseViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+        val imageView: ImageView = itemView.findViewById(R.id.releasePoster)
+        val releaseType: TextView = itemView.findViewById(R.id.releaseType)
+        val releaseTitle: TextView = itemView.findViewById(R.id.releaseTitle)
         fun bind(release: Release){
-            val imageView: ImageView = itemView.findViewById(R.id.releasePoster)
-            val releaseType: TextView = itemView.findViewById(R.id.releaseType)
-            val releaseTitle: TextView = itemView.findViewById(R.id.releaseTitle)
+            Picasso.get().load(release.posterUrl).into(imageView)
+            releaseType.text = release.genres[0].toString()
+            releaseTitle.text = release.title
         }
     }
 

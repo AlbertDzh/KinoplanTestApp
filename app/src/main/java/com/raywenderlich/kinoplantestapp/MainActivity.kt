@@ -21,10 +21,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val repertory = getMockRepertory()
         val repertoryItems = listOf(
-            RepertoryItem("Now", repertory.now),
-            RepertoryItem("Premiere", repertory.premiere),
-            RepertoryItem("Kids", repertory.kids),
-            RepertoryItem("Soon", repertory.soon)
+            RepertoryItem(getString(R.string.now), repertory.now),
+            RepertoryItem(getString(R.string.premier), repertory.premiere),
+            RepertoryItem(getString(R.string.kids), repertory.kids),
+            RepertoryItem(getString(R.string.soon), repertory.soon)
         )
 
         var recyclerView: RecyclerView = findViewById(R.id.repertoireParentView)

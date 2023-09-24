@@ -30,6 +30,7 @@ data class Banner(
 )
 
 data class RepertoryItem(
+    //val banner: List<Banner>,
     val title: String,
     val releases: List<Release>
 )

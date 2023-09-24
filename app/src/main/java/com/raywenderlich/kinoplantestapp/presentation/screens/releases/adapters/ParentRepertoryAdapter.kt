@@ -13,12 +13,12 @@ class ParentRepertoryAdapter(private val items: List<RepertoryItem>): RecyclerVi
 
 
     class RepertoryViewholder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val title: TextView = itemView.findViewById(R.id.releaseTitle)
+        val releaseListType: TextView = itemView.findViewById(R.id.releaseListType)
         val rvRepertoryReleases: RecyclerView = itemView.findViewById(R.id.releaseListItem)
         fun bind(repertoryItem: RepertoryItem){
-            title.text = repertoryItem.title
+            releaseListType.text = repertoryItem.title
             rvRepertoryReleases.apply {
-                layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.VERTICAL, false)
+                layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
                 adapter = ReleaseRepertoryAdapter(repertoryItem.releases)
             }
         }
