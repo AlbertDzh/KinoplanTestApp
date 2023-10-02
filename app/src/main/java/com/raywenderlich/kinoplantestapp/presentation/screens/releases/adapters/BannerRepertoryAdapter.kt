@@ -29,5 +29,5 @@ class BannerRepertoryAdapter(private val items: List<Banner>): RecyclerView.Adap
         holder.bind(items[position])
     }
 
-    override fun getItemCount(): Int =items.size
+    override fun getItemCount(): Int = items.size
 }

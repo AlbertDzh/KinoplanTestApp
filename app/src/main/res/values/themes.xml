@@ -65,6 +65,7 @@
     </style>
 
     <style name="Base.TextAppearance.OKUI.Headline" parent="Base.TextAppearance.OKUI.Medium">
+        <item name="android:textStyle">bold</item>
         <item name="android:textSize">17sp</item>
     </style>
 
