@@ -8,6 +8,7 @@ import android.widget.ImageView
 import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.kinoplantestapp.R
+import com.raywenderlich.kinoplantestapp.app.extensions.loadImage
 import com.raywenderlich.kinoplantestapp.model.Banner
 import com.raywenderlich.kinoplantestapp.model.RepertoryItem
 import com.squareup.picasso.Picasso
@@ -17,7 +18,7 @@ class BannerRepertoryAdapter(private val items: List<Banner>): RecyclerView.Adap
     class BannerViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val imageView: ImageView = itemView.findViewById(R.id.bannerCarouselImageView)
         fun bind(banner: Banner){
-            Picasso.get().load(banner.imageUrl).into(imageView)
+            imageView.loadImage(banner.imageUrl)
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BannerRepertoryAdapter.BannerViewHolder {

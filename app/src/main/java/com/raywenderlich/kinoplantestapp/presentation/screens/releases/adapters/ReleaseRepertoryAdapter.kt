@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.kinoplantestapp.R
+import com.raywenderlich.kinoplantestapp.app.extensions.loadImage
 import com.raywenderlich.kinoplantestapp.model.Banner
 import com.raywenderlich.kinoplantestapp.model.Release
 import com.squareup.picasso.Picasso
@@ -19,7 +20,7 @@ class ReleaseRepertoryAdapter(private val releases: List<Release>):
         val releaseType: TextView = itemView.findViewById(R.id.releaseType)
         val releaseTitle: TextView = itemView.findViewById(R.id.releaseTitle)
         fun bind(release: Release){
-            Picasso.get().load(release.posterUrl).into(imageView)
+            imageView.loadImage(release.posterUrl)
             releaseType.text = release.genres.first()
             releaseTitle.text = release.title
         }
