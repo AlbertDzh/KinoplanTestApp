@@ -5,13 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.Toolbar
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.kinoplantestapp.model.ReleaseScreenItems
 import com.raywenderlich.kinoplantestapp.model.RepertoryItem
 import com.raywenderlich.kinoplantestapp.model.getMockRepertory
+import com.raywenderlich.kinoplantestapp.presentation.screens.releases.RepertoryFragment
 import com.raywenderlich.kinoplantestapp.presentation.screens.releases.adapters.ParentRepertoryAdapter
+import com.squareup.picasso.Picasso
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,17 +22,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val repertory = getMockRepertory()
-        val repertoryItems = ReleaseScreenItems(
-            repertory.banners,
-            RepertoryItem(getString(R.string.repertory_context_screen_now), repertory.now),
-            RepertoryItem(getString(R.string.repertory_context_screen_premier), repertory.premiere),
-            RepertoryItem(getString(R.string.repertory_context_screen_kids), repertory.kids),
-            RepertoryItem(getString(R.string.repertory_context_screen_soon), repertory.soon)
-        )
-
-        var recyclerView: RecyclerView = findViewById(R.id.repertoireParentView)
-        adapter = ParentRepertoryAdapter(repertoryItems)
-        recyclerView.adapter = adapter
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        val repertoryFragment = RepertoryFragment()
+        fragmentTransaction.replace(R.id.repertoryMainFragment, repertoryFragment)
+        fragmentTransaction.commit()
     }
 }

@@ -5,4 +5,6 @@
     <string name="repertory_context_screen_premier">Премьера</string>
     <string name="repertory_context_screen_kids">Детям</string>
     <string name="repertory_context_screen_soon">Скоро в кино</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -18,7 +18,7 @@
         tools:text="Не кино" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/releaseListItem"
+        android:id="@+id/releaseRepertoryCarousel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

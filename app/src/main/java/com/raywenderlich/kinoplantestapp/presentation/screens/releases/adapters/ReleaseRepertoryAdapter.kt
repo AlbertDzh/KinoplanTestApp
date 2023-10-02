@@ -20,7 +20,7 @@ class ReleaseRepertoryAdapter(private val releases: List<Release>):
         val releaseTitle: TextView = itemView.findViewById(R.id.releaseTitle)
         fun bind(release: Release){
             Picasso.get().load(release.posterUrl).into(imageView)
-            releaseType.text = release.genres[0].toString()
+            releaseType.text = release.genres.first()
             releaseTitle.text = release.title
         }
     }

@@ -3,7 +3,6 @@ package com.raywenderlich.kinoplantestapp.presentation.screens.releases.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -13,7 +12,6 @@ import com.raywenderlich.kinoplantestapp.R
 import com.raywenderlich.kinoplantestapp.model.Banner
 import com.raywenderlich.kinoplantestapp.model.ReleaseScreenItems
 import com.raywenderlich.kinoplantestapp.model.RepertoryItem
-import com.squareup.picasso.Picasso
 
 class ParentRepertoryAdapter(private val items: ReleaseScreenItems): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -26,19 +24,20 @@ class ParentRepertoryAdapter(private val items: ReleaseScreenItems): RecyclerVie
 
         val rcRepertoryMain: RecyclerView = itemView.findViewById(R.id.rcBannerCarousel)
         fun bind(repertoryItem: List<Banner>){
-            rcRepertoryMain.apply {
-                adapter = BannerRepertoryAdapter(repertoryItem)
-            }
+            rcRepertoryMain.adapter = BannerRepertoryAdapter(repertoryItem)
+            rcRepertoryMain.addItemDecoration(DividerItemDecoration(itemView.context, LinearLayoutManager.HORIZONTAL).apply {
+                setDrawable(ContextCompat.getDrawable(itemView.context, R.drawable.line_recycler_divider)!!)
+            })
         }
     }
     class RepertoryViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val releaseListType: TextView = itemView.findViewById(R.id.releaseListType)
-        val rvRepertoryReleases: RecyclerView = itemView.findViewById(R.id.releaseListItem)
+        val rvRepertoryReleases: RecyclerView = itemView.findViewById(R.id.releaseRepertoryCarousel)
         fun bind(repertoryItem: RepertoryItem){
             releaseListType.text = repertoryItem.title
             rvRepertoryReleases.adapter = ReleaseRepertoryAdapter(repertoryItem.releases)
             rvRepertoryReleases.addItemDecoration(DividerItemDecoration(itemView.context, LinearLayoutManager.HORIZONTAL).apply {
-                setDrawable(ContextCompat.getDrawable(itemView.context, R.drawable.line_drawable)!!)
+                setDrawable(ContextCompat.getDrawable(itemView.context, R.drawable.line_recycler_divider)!!)
             })
         }
     }
