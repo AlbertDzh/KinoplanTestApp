@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Toolbar
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,14 +19,15 @@ import com.squareup.picasso.Picasso
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var fragmentManager: FragmentManager
     private lateinit var adapter: ParentRepertoryAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        val repertoryFragment = RepertoryFragment()
-        fragmentTransaction.replace(R.id.repertoryMainFragment, repertoryFragment)
-        fragmentTransaction.commit()
+        fragmentManager = supportFragmentManager
+        fragmentManager
+            .beginTransaction()
+            .replace(R.id.repertoryMainFragment, RepertoryFragment())
+            .commit()
     }
 }
