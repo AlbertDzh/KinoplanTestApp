@@ -8,9 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.kinoplantestapp.R
 import com.raywenderlich.kinoplantestapp.app.extensions.loadImage
-import com.raywenderlich.kinoplantestapp.model.Banner
 import com.raywenderlich.kinoplantestapp.model.Release
-import com.squareup.picasso.Picasso
 
 class ReleaseRepertoryAdapter(private val releases: List<Release>):
     RecyclerView.Adapter<ReleaseRepertoryAdapter.ReleaseViewHolder>() {
