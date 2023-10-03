@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.kinoplantestapp.R
 import com.raywenderlich.kinoplantestapp.app.extensions.loadImage
@@ -26,6 +27,9 @@ class ReleaseRepertoryAdapter(private val releases: List<Release>):
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReleaseViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_release, parent, false)
+        view.setOnClickListener {
+            Toast.makeText(parent.context, ReleaseViewHolder(view).releaseTitle.text, Toast.LENGTH_SHORT).show()
+        }
         return ReleaseViewHolder(view)
     }
 

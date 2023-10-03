@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.kinoplantestapp.R
 import com.raywenderlich.kinoplantestapp.app.extensions.loadImage
@@ -20,6 +21,9 @@ class BannerRepertoryAdapter(private val items: List<Banner>): RecyclerView.Adap
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BannerViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_banner, parent, false)
+        view.setOnClickListener {
+            Toast.makeText(parent.context, "Clicked on banner", Toast.LENGTH_SHORT).show()
+        }
         return BannerViewHolder(view)
     }
 
