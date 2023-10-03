@@ -18,12 +18,12 @@ class BannerRepertoryAdapter(private val items: List<Banner>): RecyclerView.Adap
             imageView.loadImage(banner.imageUrl)
         }
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BannerRepertoryAdapter.BannerViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BannerViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_banner, parent, false)
-        return BannerRepertoryAdapter.BannerViewHolder(view)
+        return BannerViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: BannerRepertoryAdapter.BannerViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BannerViewHolder, position: Int) {
         holder.bind(items[position])
     }
 
