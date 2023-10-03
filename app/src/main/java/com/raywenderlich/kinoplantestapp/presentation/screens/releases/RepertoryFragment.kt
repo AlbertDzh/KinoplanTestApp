@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.kinoplantestapp.R
-import com.raywenderlich.kinoplantestapp.model.ReleaseScreenItems
-import com.raywenderlich.kinoplantestapp.model.RepertoryItem
 import com.raywenderlich.kinoplantestapp.model.getMockRepertory
 import com.raywenderlich.kinoplantestapp.presentation.screens.releases.adapters.ParentRepertoryAdapter
 
