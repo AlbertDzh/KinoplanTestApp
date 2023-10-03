@@ -1,6 +1,5 @@
 package com.raywenderlich.kinoplantestapp.presentation.screens.releases.adapters
 
-import android.media.audiofx.DynamicsProcessing.EqBand
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

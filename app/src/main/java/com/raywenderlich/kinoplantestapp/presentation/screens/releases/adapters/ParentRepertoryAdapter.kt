@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.kinoplantestapp.R
 import com.raywenderlich.kinoplantestapp.model.Banner
-import com.raywenderlich.kinoplantestapp.model.ReleaseScreenItems
-import com.raywenderlich.kinoplantestapp.model.RepertoryItem
+import com.raywenderlich.kinoplantestapp.presentation.screens.releases.ReleaseScreenItems
+import com.raywenderlich.kinoplantestapp.presentation.screens.releases.RepertoryItem
+
 
 class ParentRepertoryAdapter(private val items: ReleaseScreenItems): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     class BannerViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
