@@ -13,8 +13,5 @@ data class ReleaseScreenItems (
     val size: Int = 5
 }
 
-data class RepertoryItem(
-    val title: String,
-    val releases: List<Release>
-)
+data class RepertoryItem(val title: String, val releases: List<Release>)
 
