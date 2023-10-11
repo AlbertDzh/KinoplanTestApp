@@ -1,6 +1,8 @@
 package com.raywenderlich.kinoplantestapp.app.extensions
 
 import android.widget.ImageView
+import com.raywenderlich.kinoplantestapp.model.Release
+import com.raywenderlich.kinoplantestapp.presentation.screens.releases.ReleaseRepertoryItem
 import com.squareup.picasso.Picasso
 
 
@@ -8,6 +10,13 @@ import com.squareup.picasso.Picasso
 fun ImageView.loadImage(url: String?){
     Picasso.get().load(url).into(this)
 }
+
+
+fun Release.toReleaseRepertoryItem() = ReleaseRepertoryItem(
+    poster = this.posterUrl,
+    genre = this.genres.first(),
+    title = this.title
+)
 
 /*
 

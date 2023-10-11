@@ -17,8 +17,15 @@ data class ReleaseScreenItems (
 
 data class RepertoryItem(
     val title: String,
-    val releases: List<Release>
+    val releases: List<ReleaseRepertoryItem>
     )
+
+
+data class ReleaseRepertoryItem(
+    val poster: String?,
+    val genre: String,
+    val title: String
+)
 
 
 

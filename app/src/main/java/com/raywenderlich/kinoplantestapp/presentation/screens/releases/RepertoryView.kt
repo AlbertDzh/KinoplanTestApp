@@ -1,6 +1,7 @@
 package com.raywenderlich.kinoplantestapp.presentation.screens.releases
 
-interface RepertoryView {
+import com.raywenderlich.kinoplantestapp.model.Repertory
 
-        fun showRepertoryData(repertoryData: ReleaseScreenItems)
+interface RepertoryView {
+        fun showRepertoryData(repertory:Repertory)
 }

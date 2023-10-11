@@ -7,23 +7,31 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.kinoplantestapp.R
+import com.raywenderlich.kinoplantestapp.app.extensions.toReleaseRepertoryItem
+import com.raywenderlich.kinoplantestapp.model.Repertory
 import com.raywenderlich.kinoplantestapp.presentation.screens.releases.adapters.ParentRepertoryAdapter
 
 class RepertoryFragment : Fragment(), RepertoryView {
 
-    lateinit var presenter: RepertoryScreenPresenter
+    private val presenter: RepertoryScreenPresenter = RepertoryScreenPresenter(this)
     lateinit var adapter: ParentRepertoryAdapter
     private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_repertory, container, false)
-        presenter = RepertoryScreenPresenter(this)
         recyclerView = view.findViewById(R.id.repertoireParentView)
-        presenter.loadRepertory(this)
+        presenter.loadRepertory()
         return view
     }
 
-    override fun showRepertoryData(repertoryData: ReleaseScreenItems) {
+    override fun showRepertoryData(repertory: Repertory) {
+        val repertoryData = ReleaseScreenItems(
+            repertory.banners,
+            RepertoryItem(getString(R.string.repertory_context_screen_now), repertory.now.map { it.toReleaseRepertoryItem() }),
+            RepertoryItem(getString(R.string.repertory_context_screen_premier), repertory.premiere.map { it.toReleaseRepertoryItem() }),
+            RepertoryItem(getString(R.string.repertory_context_screen_kids), repertory.kids.map { it.toReleaseRepertoryItem() }),
+            RepertoryItem(getString(R.string.repertory_context_screen_soon), repertory.soon.map { it.toReleaseRepertoryItem() }),
+        )
         adapter = ParentRepertoryAdapter(repertoryData)
         recyclerView.adapter = adapter
     }

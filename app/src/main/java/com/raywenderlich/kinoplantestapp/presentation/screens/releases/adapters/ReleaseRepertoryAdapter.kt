@@ -10,17 +10,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.kinoplantestapp.R
 import com.raywenderlich.kinoplantestapp.app.extensions.loadImage
 import com.raywenderlich.kinoplantestapp.model.Release
+import com.raywenderlich.kinoplantestapp.presentation.screens.releases.ReleaseRepertoryItem
 
-class ReleaseRepertoryAdapter(private val releases: List<Release>):
+class ReleaseRepertoryAdapter(private val releases: List<ReleaseRepertoryItem>):
     RecyclerView.Adapter<ReleaseRepertoryAdapter.ReleaseViewHolder>() {
 
     class ReleaseViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val imageView: ImageView = itemView.findViewById(R.id.releasePoster)
         val releaseType: TextView = itemView.findViewById(R.id.releaseType)
         val releaseTitle: TextView = itemView.findViewById(R.id.releaseTitle)
-        fun bind(release: Release){
-            imageView.loadImage(release.posterUrl)
-            releaseType.text = release.genres.first()
+        fun bind(release: ReleaseRepertoryItem){
+            imageView.loadImage(release.poster)
+            releaseType.text = release.genre
             releaseTitle.text = release.title
         }
     }
