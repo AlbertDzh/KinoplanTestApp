@@ -1,5 +1,8 @@
 package com.raywenderlich.kinoplantestapp.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
 //todo Повторить экран релиза (кроме тулбара с картинкой, списка кадров и рейтинга)
 // при клике на кнопку "поделиться", "купить билеты", "трейллер" отображать
 // алерт диалоги с соотвествующим текстом
@@ -7,6 +10,7 @@ package com.raywenderlich.kinoplantestapp.model
 // для получения данных - используй getMockRelease()
 // Для работ с датами использовать ThreeTenAbp
 
+@Parcelize
 data class Release(
     val id: String,
     val title: String,
@@ -22,7 +26,7 @@ data class Release(
     val cast: List<String>,
     val story: String?,
     val screenShorts: List<String>
-)
+): Parcelable
 
 data class Banner(
     val imageUrl: String,

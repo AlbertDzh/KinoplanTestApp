@@ -1,20 +1,22 @@
 package com.raywenderlich.kinoplantestapp.presentation.screens.releases.adapters
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.kinoplantestapp.R
 import com.raywenderlich.kinoplantestapp.app.extensions.loadImage
-import com.raywenderlich.kinoplantestapp.model.Release
+import com.raywenderlich.kinoplantestapp.presentation.screens.releaseRepertoryInfoScreen.ReleaseInfoFragment
 import com.raywenderlich.kinoplantestapp.presentation.screens.releases.ReleaseRepertoryItem
 
-class ReleaseRepertoryAdapter(private val releases: List<ReleaseRepertoryItem>):
+class ReleaseRepertoryAdapter(
+    private val releases: List<ReleaseRepertoryItem>,
+):
     RecyclerView.Adapter<ReleaseRepertoryAdapter.ReleaseViewHolder>() {
-
     class ReleaseViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val imageView: ImageView = itemView.findViewById(R.id.releasePoster)
         val releaseType: TextView = itemView.findViewById(R.id.releaseType)
@@ -23,14 +25,22 @@ class ReleaseRepertoryAdapter(private val releases: List<ReleaseRepertoryItem>):
             imageView.loadImage(release.poster)
             releaseType.text = release.genre
             releaseTitle.text = release.title
+            itemView.setOnClickListener {
+                val releaseInfoFragment = ReleaseInfoFragment()
+                releaseInfoFragment.arguments = Bundle().apply {
+                    putParcelable("release", release.release)
+                }
+                val activityContext = it.context as AppCompatActivity
+                activityContext.supportFragmentManager.beginTransaction()
+                    .replace(R.id.repertoryMainFragment, releaseInfoFragment)
+                    .addToBackStack(null)
+                    .commit()
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReleaseViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_release, parent, false)
-        view.setOnClickListener {
-            Toast.makeText(parent.context, ReleaseViewHolder(view).releaseTitle.text, Toast.LENGTH_SHORT).show()
-        }
         return ReleaseViewHolder(view)
     }
 
@@ -39,4 +49,5 @@ class ReleaseRepertoryAdapter(private val releases: List<ReleaseRepertoryItem>):
     override fun onBindViewHolder(holder: ReleaseViewHolder, position: Int) {
         holder.bind(releases[position])
     }
+
 }

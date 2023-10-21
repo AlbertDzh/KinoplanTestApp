@@ -10,7 +10,7 @@
         <item name="colorSecondaryVariant">@color/dark_gray</item>
         <item name="colorOnSecondary">@color/light_gray</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -97,6 +97,14 @@
         <item name="android:paddingTop">1dp</item>
     </style>
 
+    <style name="Base.TextAppearance.OKUI.Caption3" parent="Base.TextAppearance.OKUI.Regular">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingBottom">1dp</item>
+        <item name="android:paddingTop">1dp</item>
+    </style>
+
     <style name="Base.TextAppearance.OKUI.Caption2" parent="Base.TextAppearance.OKUI.Regular">
         <item name="android:textSize">11sp</item>
     </style>
@@ -122,5 +130,10 @@
     <style name="TextAppearance.OKUI.Caption1" parent="Base.TextAppearance.OKUI.Caption1" />
 
     <style name="TextAppearance.OKUI.Caption2" parent="Base.TextAppearance.OKUI.Caption2" />
+
+    <style name="ThemeOverlay.KinoplanTestApp.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
+        <item name="fullscreenTextColor">@color/light_blue_A200</item>
+    </style>
 
 </resources>

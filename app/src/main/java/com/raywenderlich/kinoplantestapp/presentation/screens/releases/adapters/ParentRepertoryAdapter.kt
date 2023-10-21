@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,7 +14,9 @@ import com.raywenderlich.kinoplantestapp.presentation.screens.releases.ReleaseSc
 import com.raywenderlich.kinoplantestapp.presentation.screens.releases.RepertoryItem
 
 
-class ParentRepertoryAdapter(private val items: ReleaseScreenItems): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ParentRepertoryAdapter(
+    private val items: ReleaseScreenItems):
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     class BannerViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
         val rcRepertoryMain: RecyclerView = itemView.findViewById(R.id.rcBannerCarousel)
@@ -26,6 +27,7 @@ class ParentRepertoryAdapter(private val items: ReleaseScreenItems): RecyclerVie
             })
         }
     }
+
     class RepertoryViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val releaseListType: TextView = itemView.findViewById(R.id.releaseListType)
         val rvRepertoryReleases: RecyclerView = itemView.findViewById(R.id.releaseRepertoryCarousel)

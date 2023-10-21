@@ -1,7 +1,11 @@
 package com.raywenderlich.kinoplantestapp.app.extensions
 
+import android.view.View
 import android.widget.ImageView
+import androidx.fragment.app.Fragment
+import com.raywenderlich.kinoplantestapp.R
 import com.raywenderlich.kinoplantestapp.model.Release
+import com.raywenderlich.kinoplantestapp.presentation.screens.releaseRepertoryInfoScreen.adapters.*
 import com.raywenderlich.kinoplantestapp.presentation.screens.releases.ReleaseRepertoryItem
 import com.squareup.picasso.Picasso
 
@@ -15,8 +19,17 @@ fun ImageView.loadImage(url: String?){
 fun Release.toReleaseRepertoryItem() = ReleaseRepertoryItem(
     poster = this.posterUrl,
     genre = this.genres.first(),
-    title = this.title
+    title = this.title,
+    release = this
 )
+
+fun Release.toReleaseInfoCardItemList(): List<ReleaseInfoCardItem> {
+    return listOf(
+        ReleasePrimaryInformationSectionItem(this.ageRating, this.genres.first(), this.duration, this.countries.joinToString(", "), this.posterUrl),
+        ReleaseTrailerSectionItem(this.videoThumbnailUrl),
+        ReleaseMainInformationSectionItem(this.duration, this.directors.joinToString(", "), this.cast.joinToString(", "), this.story)
+    )
+}
 
 /*
 

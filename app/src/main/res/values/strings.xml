@@ -7,4 +7,7 @@
     <string name="repertory_context_screen_soon">Скоро в кино</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="repertory_release_card_info_error"> Неверный формат данных </string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

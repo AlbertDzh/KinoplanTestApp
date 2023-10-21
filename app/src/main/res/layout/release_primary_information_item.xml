@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="125dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/releaseCard"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="8dp">
+
+        <ImageView
+            android:id="@+id/releaseInfoScreenPosterId"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/ageRating"
+        style="@style/TextAppearance.OKUI.Caption1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:maxWidth="40dp"
+        app:layout_constraintStart_toEndOf="@+id/releaseCard"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="12+"
+        android:background="@drawable/background_shape_radius" />
+
+    <TextView
+        android:id="@+id/filmGenre"
+        style="@style/TextAppearance.OKUI.Caption1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        app:layout_constraintStart_toEndOf="@+id/ageRating"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="ФЕНТЕЗИ"
+        android:layout_marginLeft="4dp"
+        android:background="@drawable/background_shape_radius"/>
+
+    <TextView
+        android:id="@+id/premiereTag"
+        style="@style/Base.TextAppearance.OKUI.Caption3"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        app:layout_constraintStart_toStartOf="@+id/ageRating"
+        app:layout_constraintTop_toBottomOf="@+id/ageRating"
+        android:text="Премьера"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/premiereStartDate"
+        style="@style/Base.TextAppearance.OKUI.Regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="@+id/premiereTag"
+        app:layout_constraintTop_toBottomOf="@+id/premiereTag"
+        tools:text="С 6 апреля 2023" />
+
+
+    <TextView
+        android:id="@+id/countryTag"
+        style="@style/Base.TextAppearance.OKUI.Caption3"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        app:layout_constraintStart_toStartOf="@+id/premiereStartDate"
+        app:layout_constraintTop_toBottomOf="@+id/premiereStartDate"
+        android:text="Страна"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/countryCardInfo"
+        style="@style/Base.TextAppearance.OKUI.Regular"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        app:layout_constraintStart_toStartOf="@+id/countryTag"
+        app:layout_constraintTop_toBottomOf="@+id/countryTag"
+        tools:text="Австралия"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

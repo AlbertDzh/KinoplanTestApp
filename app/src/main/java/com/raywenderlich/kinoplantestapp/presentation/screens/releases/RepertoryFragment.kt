@@ -5,16 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.kinoplantestapp.R
 import com.raywenderlich.kinoplantestapp.app.extensions.toReleaseRepertoryItem
+import com.raywenderlich.kinoplantestapp.model.Release
 import com.raywenderlich.kinoplantestapp.model.Repertory
+import com.raywenderlich.kinoplantestapp.presentation.screens.releaseRepertoryInfoScreen.ReleaseInfoFragment
 import com.raywenderlich.kinoplantestapp.presentation.screens.releases.adapters.ParentRepertoryAdapter
 
 class RepertoryFragment : Fragment(), RepertoryView {
 
     private val presenter: RepertoryScreenPresenter = RepertoryScreenPresenter(this)
     lateinit var adapter: ParentRepertoryAdapter
+    private  lateinit var releaseInfoFragment: ReleaseInfoFragment
     private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -35,5 +39,7 @@ class RepertoryFragment : Fragment(), RepertoryView {
         adapter = ParentRepertoryAdapter(repertoryData)
         recyclerView.adapter = adapter
     }
+
+
 
 }
