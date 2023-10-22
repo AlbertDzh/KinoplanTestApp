@@ -2,12 +2,10 @@ package com.raywenderlich.kinoplantestapp.presentation.screens.releaseRepertoryI
 
 import android.icu.text.CaseMap.Title
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
@@ -22,6 +20,7 @@ import com.raywenderlich.kinoplantestapp.app.extensions.loadImage
 import com.raywenderlich.kinoplantestapp.model.Release
 import com.raywenderlich.kinoplantestapp.presentation.screens.releaseRepertoryInfoScreen.adapters.ReleaseInfoCardItem
 import com.raywenderlich.kinoplantestapp.presentation.screens.releaseRepertoryInfoScreen.adapters.ReleaseInfoCardParentAdapter
+import kotlinx.coroutines.NonDisposableHandle.parent
 
 
 class ReleaseInfoFragment : Fragment(), LoadReleaseInfoCardView {
@@ -61,10 +60,18 @@ class ReleaseInfoFragment : Fragment(), LoadReleaseInfoCardView {
         presenter.convertToValidType(release)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu, menu)
+    }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
                 activity?.onBackPressed()
+                true
+            }
+            R.id.shareBtn -> {
+                Toast.makeText(context, "Clicked on banner", Toast.LENGTH_SHORT).show()
                 true
             }
             else -> super.onOptionsItemSelected(item)
