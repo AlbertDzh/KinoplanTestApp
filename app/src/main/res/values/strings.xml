@@ -10,4 +10,5 @@
     <string name="repertory_release_card_info_error"> Неверный формат данных </string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="buy_button_text">Купить</string>
 </resources>

@@ -54,6 +54,4 @@ class ReleaseInfoFragment : Fragment(), LoadReleaseInfoCardView {
         adapter = ReleaseInfoCardParentAdapter(releases)
         recyclerView.adapter = adapter
     }
-
-
 }

@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_collapseMode="parallax"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/releaseInfoScreenToolbar"
@@ -46,9 +46,29 @@
         android:orientation="vertical"
         tools:listitem="@layout/release_primary_information_item"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="65dp">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="16dp"
+        android:layout_gravity="bottom|center_horizontal" >
+
+        <com.google.android.material.button.MaterialButton
+            app:cornerRadius="8dp"
+            android:id="@+id/buyButton"
+            android:layout_width="343dp"
+            android:layout_height="wrap_content"
+            android:text="@string/buy_button_text"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:backgroundTint="@color/button_payment_color"
+            android:textAllCaps="false"/>
+
+    </FrameLayout>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
