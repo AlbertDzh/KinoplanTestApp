@@ -3,6 +3,7 @@ package com.raywenderlich.kinoplantestapp.presentation.screens.releaseRepertoryI
 import android.icu.text.CaseMap.Title
 import android.os.Bundle
 import android.view.*
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import android.widget.ImageView
 import android.widget.Toast
@@ -49,10 +50,15 @@ class ReleaseInfoFragment : Fragment(), LoadReleaseInfoCardView {
         setHasOptionsMenu(true)
         val toolbarTitle: Toolbar = view.findViewById(R.id.releaseInfoScreenToolbar)!!
         val collapsingImage: ImageView = view.findViewById(R.id.collapsingToolbarImage)
+        val buyButton: Button = view.findViewById(R.id.buyButton)
 
         (activity as? AppCompatActivity)?.let {
             it.setSupportActionBar(toolbarTitle)
             it.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        }
+
+        buyButton.setOnClickListener {
+            Toast.makeText(context, "Clicked on buy button", Toast.LENGTH_SHORT).show()
         }
 
         collapsingImage.loadImage(release.videoThumbnailUrl)
@@ -71,7 +77,7 @@ class ReleaseInfoFragment : Fragment(), LoadReleaseInfoCardView {
                 true
             }
             R.id.shareBtn -> {
-                Toast.makeText(context, "Clicked on banner", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Clicked on share", Toast.LENGTH_SHORT).show()
                 true
             }
             else -> super.onOptionsItemSelected(item)
