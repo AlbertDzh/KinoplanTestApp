@@ -12,4 +12,6 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="buy_button_text">Купить</string>
     <string name="share_btn">Поделиться</string>
+    <string name="premier_date_format">С %1$s </string>
+    <string name="release_duration_format">%1$d ч. %2$d мин. </string>
 </resources>

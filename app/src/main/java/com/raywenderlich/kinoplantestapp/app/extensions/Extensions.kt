@@ -1,12 +1,18 @@
 package com.raywenderlich.kinoplantestapp.app.extensions
 
 
+import android.content.Context
+import android.provider.Settings.System.getString
 import android.widget.ImageView
+import com.raywenderlich.kinoplantestapp.R
 import com.raywenderlich.kinoplantestapp.model.Release
 import com.raywenderlich.kinoplantestapp.presentation.screens.releaseRepertoryInfoScreen.adapters.*
 import com.raywenderlich.kinoplantestapp.presentation.screens.releases.ReleaseRepertoryItem
 import com.squareup.picasso.Picasso
 import org.threeten.bp.Duration
+import org.threeten.bp.LocalDate
+import org.threeten.bp.format.DateTimeFormatter
+import java.util.*
 
 
 fun ImageView.loadImage(url: String?){
@@ -21,23 +27,17 @@ fun Release.toReleaseRepertoryItem() = ReleaseRepertoryItem(
     release = this
 )
 
-fun toThreeTenABPDuration(time: Long): String {
-    var time =  Duration.ofMinutes(time) //конвертим в экземпляр класса с представлением минут
+fun Long.toThreeTenABPDuration(context: Context): String {
+    var time =  Duration.ofMinutes(this) //конвертим в экземпляр класса с представлением минут
     var hours = time.toHours() //конвертим в часы
     var remainingMinutes = time.minusMinutes(hours).toMinutes()
-    return "$hours ч. $remainingMinutes мин. "
+    return context.getString(R.string.release_duration_format, hours, remainingMinutes)
 }
 
-fun convertDateToCorrectFormat(date: String): String{
-    val splitter = "-"
-    val splittedDate = date.split(splitter)
-    val monthWords = mapOf(1 to "января", 2 to "февраля", 3 to "марта", 4 to "апреля",
-        5 to "мая", 6 to "июня", 7 to "июля", 8 to "августа", 9 to "сентября", 10 to "октября",
-        11 to "ноября", 12 to "декабря"
-    )
-    val monthName = monthWords[splittedDate[1].toInt()]
-    val dayName = splittedDate[2].toInt()
-    return("С $dayName $monthName ${splittedDate[0]}")
+fun String.convertDateToCorrectFormat(context: Context): String{
+    var formatter = DateTimeFormatter.ofPattern("d MMMM yyyy").withLocale(Locale("ru"))
+    var formattedDate = context.getString(R.string.premier_date_format, LocalDate.parse(this).format(formatter))
+    return formattedDate
 }
 
 fun Release.toReleaseInfoCardItemList(): List<ReleaseInfoCardItem> {

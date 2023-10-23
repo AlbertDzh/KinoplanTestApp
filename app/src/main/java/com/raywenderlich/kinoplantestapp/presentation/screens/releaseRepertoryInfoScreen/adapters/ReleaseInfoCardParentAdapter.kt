@@ -1,10 +1,12 @@
 package com.raywenderlich.kinoplantestapp.presentation.screens.releaseRepertoryInfoScreen.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -33,7 +35,7 @@ class ReleaseInfoCardParentAdapter(private val releaseInfoItems: List<ReleaseInf
         fun bind(cardItem: ReleasePrimaryInformationSectionItem){
             ageRating.text = cardItem.ageRating
             genre.text = cardItem.genre
-            premierStartDate.text = convertDateToCorrectFormat(cardItem.premiere)
+            premierStartDate.text = cardItem.premiere.convertDateToCorrectFormat(itemView.context)
             countryInfo.text = cardItem.country
             releaseImage.loadImage(cardItem.posterUrl)
         }
@@ -54,9 +56,9 @@ class ReleaseInfoCardParentAdapter(private val releaseInfoItems: List<ReleaseInf
         var releasePlot: TextView = itemView.findViewById(R.id.releasePlotInfo)
 
         fun bind(mainInfoItems: ReleaseMainInformationSectionItem){
-            releaseDuration.text = toThreeTenABPDuration(mainInfoItems.duration!!)
+            releaseDuration.text = mainInfoItems.duration!!.toThreeTenABPDuration(itemView.context)
             releaseDirectors.text = mainInfoItems.direrectors
-            releaseCast.text = mainInfoItems.cast.toString()
+            releaseCast.text = mainInfoItems.cast
             releasePlot.text = mainInfoItems.story
         }
     }
