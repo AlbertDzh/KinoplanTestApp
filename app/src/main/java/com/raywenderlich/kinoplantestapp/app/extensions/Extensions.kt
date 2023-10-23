@@ -1,14 +1,12 @@
 package com.raywenderlich.kinoplantestapp.app.extensions
 
-import android.view.View
+
 import android.widget.ImageView
-import androidx.fragment.app.Fragment
-import com.raywenderlich.kinoplantestapp.R
 import com.raywenderlich.kinoplantestapp.model.Release
 import com.raywenderlich.kinoplantestapp.presentation.screens.releaseRepertoryInfoScreen.adapters.*
 import com.raywenderlich.kinoplantestapp.presentation.screens.releases.ReleaseRepertoryItem
 import com.squareup.picasso.Picasso
-
+import org.threeten.bp.Duration
 
 
 fun ImageView.loadImage(url: String?){
@@ -23,9 +21,28 @@ fun Release.toReleaseRepertoryItem() = ReleaseRepertoryItem(
     release = this
 )
 
+fun toThreeTenABPDuration(time: Long): String {
+    var time =  Duration.ofMinutes(time) //конвертим в экземпляр класса с представлением минут
+    var hours = time.toHours() //конвертим в часы
+    var remainingMinutes = time.minusMinutes(hours).toMinutes()
+    return "$hours ч. $remainingMinutes мин. "
+}
+
+fun convertDateToCorrectFormat(date: String): String{
+    val splitter = "-"
+    val splittedDate = date.split(splitter)
+    val monthWords = mapOf(1 to "января", 2 to "февраля", 3 to "марта", 4 to "апреля",
+        5 to "мая", 6 to "июня", 7 to "июля", 8 to "августа", 9 to "сентября", 10 to "октября",
+        11 to "ноября", 12 to "декабря"
+    )
+    val monthName = monthWords[splittedDate[1].toInt()]
+    val dayName = splittedDate[2].toInt()
+    return("С $dayName $monthName ${splittedDate[0]}")
+}
+
 fun Release.toReleaseInfoCardItemList(): List<ReleaseInfoCardItem> {
     return listOf(
-        ReleasePrimaryInformationSectionItem(this.ageRating, this.genres.first(), this.duration, this.countries.joinToString(", "), this.posterUrl),
+        ReleasePrimaryInformationSectionItem(this.ageRating, this.genres.first(), this.premiere, this.countries.joinToString(", "), this.posterUrl),
         ReleaseTrailerSectionItem(this.videoThumbnailUrl),
         ReleaseMainInformationSectionItem(this.duration, this.directors.joinToString(", "), this.cast.joinToString(", "), this.story)
     )

@@ -5,7 +5,7 @@ sealed class ReleaseInfoCardItem
     class ReleasePrimaryInformationSectionItem(
         val ageRating: String,
         val genre: String,
-        val premiere: Long?,
+        val premiere: String,
         val country: String,
         val posterUrl: String?
     ): ReleaseInfoCardItem()

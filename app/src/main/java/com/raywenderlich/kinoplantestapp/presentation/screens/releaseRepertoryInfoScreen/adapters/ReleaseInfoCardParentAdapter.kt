@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.kinoplantestapp.R
+import com.raywenderlich.kinoplantestapp.app.extensions.convertDateToCorrectFormat
 import com.raywenderlich.kinoplantestapp.app.extensions.loadImage
+import com.raywenderlich.kinoplantestapp.app.extensions.toThreeTenABPDuration
 import com.raywenderlich.kinoplantestapp.model.Banner
 import com.raywenderlich.kinoplantestapp.presentation.screens.releases.adapters.BannerRepertoryAdapter
 import com.raywenderlich.kinoplantestapp.presentation.screens.releases.adapters.ParentRepertoryAdapter
@@ -26,12 +28,12 @@ class ReleaseInfoCardParentAdapter(private val releaseInfoItems: List<ReleaseInf
         var genre: TextView = itemView.findViewById(R.id.filmGenre)
         var countryInfo: TextView = itemView.findViewById(R.id.countryCardInfo)
         var releaseImage: ImageView = itemView.findViewById(R.id.releaseInfoScreenPosterId)
-        val releaseDuration: TextView = itemView.findViewById(R.id.premiereStartDate)
+        val premierStartDate: TextView = itemView.findViewById(R.id.premiereStartDate)
 
         fun bind(cardItem: ReleasePrimaryInformationSectionItem){
             ageRating.text = cardItem.ageRating
             genre.text = cardItem.genre
-            releaseDuration.text = cardItem.premiere.toString()
+            premierStartDate.text = convertDateToCorrectFormat(cardItem.premiere)
             countryInfo.text = cardItem.country
             releaseImage.loadImage(cardItem.posterUrl)
         }
@@ -52,7 +54,7 @@ class ReleaseInfoCardParentAdapter(private val releaseInfoItems: List<ReleaseInf
         var releasePlot: TextView = itemView.findViewById(R.id.releasePlotInfo)
 
         fun bind(mainInfoItems: ReleaseMainInformationSectionItem){
-            releaseDuration.text = mainInfoItems.duration.toString()
+            releaseDuration.text = toThreeTenABPDuration(mainInfoItems.duration!!)
             releaseDirectors.text = mainInfoItems.direrectors
             releaseCast.text = mainInfoItems.cast.toString()
             releasePlot.text = mainInfoItems.story
